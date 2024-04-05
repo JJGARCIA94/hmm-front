@@ -1,0 +1,38 @@
+.medical-area-container {
+    background-color: #eff4ff;
+
+    .medical-area-info-container {
+        padding: 48px 96px;
+
+        @media only screen and (max-width: 991px) {
+            padding: 24px 48px;
+        }
+
+        .medical-area-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .medical-area-subtitle {
+            font-size: 12px;
+        }
+    }
+
+    .medical-area-location-container {
+        background-color: #266aea;
+        border-radius: 0 20px 20px 0;
+
+        @media only screen and (max-width: 991px) {
+            border-radius: 0 0 20px 20px;
+        }
+
+        .hospitals-card-container {
+            max-height: 560px;
+            overflow: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+            scrollbar-gutter: stable;
+            scroll-padding-bottom: 30px;
+        }
+    }
+}

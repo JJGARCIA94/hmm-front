@@ -1,0 +1,1 @@
+export const DOCTOR_IMAGES_ROUTE = '/img/doctors';

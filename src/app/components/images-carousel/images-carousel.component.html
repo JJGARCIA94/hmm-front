@@ -1,0 +1,12 @@
+<div class="carousel br-20">
+    <div class="carousel-slides" [style.transform]="'translateX(' + (-currentIndex * 100) + '%)'">
+        <div *ngFor="let image of images; let i = index" class="carousel-slide"
+            [ngClass]="{ 'active': currentIndex === i}">
+            <img [src]="image.image" class="br-20" [alt]="image.title" [height]="image?.height" [ngClass]="image?.className">
+        </div>
+    </div>
+    <div class="indicators">
+        <div *ngFor="let image of images; let i = index" class="indicator" [ngClass]="{ active: currentIndex === i }"
+            (click)="showImage(i)"></div>
+    </div>
+</div>

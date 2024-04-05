@@ -1,0 +1,39 @@
+<div class="d-flex justify-content-center">
+    <div class="p-4 bg-identity-secondary search-doctors-container-form br-20">
+        <form class="w-100 search-service-form mb-3" [formGroup]="searchDoctorsForm" (ngSubmit)="onSubmitSearchDoctorForm()">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-12 col-lg-4">
+                    <input class="form-control"
+                        [ngClass]="{'input-error': searchDoctorsForm.controls['search'].invalid && searchDoctorsForm.controls['search'].touched}"
+                        type="text" formControlName="search" maxlength="100" placeholder="Buscar médico especialista">
+                </div>
+                <div class="form-group col-12 col-lg-4 mt-3 mt-lg-0">
+                    <select class="form-select" formControlName="specialty"
+                        [ngClass]="{'input-error': searchDoctorsForm.get('specialty')?.invalid && searchDoctorsForm.get('specialty')?.touched}">
+                        <option [value]="0">Especialidad</option>
+                        <option *ngFor="let specialty of specialties" [value]="specialty.id">{{specialty.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-12 col-lg-3 my-3 my-lg-0">
+                    <select class="form-select" formControlName="hospital"
+                        [ngClass]="{'input-error': searchDoctorsForm.get('hospital')?.invalid && searchDoctorsForm.get('hospital')?.touched}">
+                        <option [value]="0">Hospitales</option>
+                        <option *ngFor="let hospital of hospitals" [value]="hospital.id">{{hospital.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-12 col-lg-1">
+                    <button class="btn btn-primary d-flex justify-content-center search-doctors-btn"><mat-icon>search</mat-icon></button>
+                </div>
+            </div>
+        </form>
+        <div class="d-flex flex-column direct-access-container p-4 align-items-center">
+            <p class="fw-bold">Tambien puedes buscar</p>
+            <div class="row">
+                <div *ngFor="let specialty of specialties.slice(0, 6)" class="col-12 col-md-4 col-lg-3 direct-access-items-container">
+                    <p class="py-2 px-3 text-center br-20 cursor-pointer direct-access-items" (click)="onSelectDerivation(specialty.id)">{{specialty.derivation}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

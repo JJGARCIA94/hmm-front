@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-end mb-4">
+    <button class="cards-carousel-arrows d-flex align-items-center justify-content-center"
+        [disabled]="currentIndex === 0" (click)="prevSlide()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+    <button class="cards-carousel-arrows ms-3 d-flex align-items-center justify-content-center"
+        [disabled]="currentIndex >= cardCarouselItems.length - cardsOnDisplay"
+        (click)="nextSlide()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+</div>
+<div class="cards-carousel-container mb-2">
+    <div class="row gx-3 cards-carousel-content flex-nowrap" [style.transform]="'translateX(' + displacement + 'px)'">
+        <p *ngIf="cardCarouselItems.length === 0" class="text-center">Sin items</p>
+        <div *ngFor="let item of cardCarouselItems" class="col-12 col-md-6 col-lg-4 col-xl-3 cards-carousel-items-container">
+            <div class="cards-carousel-items p-4 br-20 text-white d-flex flex-column justify-content-between">
+                <img [src]="item.image" class="br-20 h-50" alt="blog">
+                <div class="mt-2">
+                    <p class="cards-carousel-items-titles">{{item.title}}</p>
+                    <p class="cards-carousel-items-descriptions">{{item.description}}</p>
+                </div>
+                <button class="btn btn-light text-primary cards-carousel-items-btns d-flex align-items-center"><span>Ver
+                        más</span> <mat-icon
+                        class="text-primary medical-info-img-info-icon">keyboard_arrow_right</mat-icon></button>
+            </div>
+        </div>
+    </div>
+</div>

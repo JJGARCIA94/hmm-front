@@ -1,0 +1,36 @@
+.search-doctors-container-form {
+    width: 80%;
+    z-index: 999;
+
+    @media only screen and (max-width: 991px) {
+        width: 100%;
+    }
+
+    .search-doctors-btn {
+        height: 38px;
+    
+        @media only screen and (max-width: 991px) {
+            width: 100%;
+        }
+    }
+}
+
+.direct-access-container {
+    border-top: 1px solid lightgray;
+
+    .direct-access-items-container {
+        white-space: nowrap;
+        overflow: hidden;
+
+        .direct-access-items {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .direct-access-items:hover {
+            color: white;
+            background-color: #0d6efd;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+.cards-carousel-arrows {
+    width: 45px;
+    height: 45px;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 50%;
+    box-shadow: 0 2px 25px 0 rgba(0, 0, 0, .1);
+}
+
+.cards-carousel-arrows:not(:disabled):hover {
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, .2);
+}
+
+.cards-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    .cards-carousel-content {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+
+    .cards-carousel-items {
+        height: 450px;
+        background-color: #266AEA;
+
+        .cards-carousel-items-titles {
+            font-size: 17px;
+            font-weight: 700;
+        }
+        
+        .cards-carousel-items-descriptions {
+            font-size: 12px;
+        }
+        
+        .cards-carousel-items-btns {
+            width: 100px;
+            height: 48px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    }
+}

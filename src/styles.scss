@@ -1,1 +1,70 @@
-/* You can add global styles to this file, and also import other style files */
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --color-identity-primary: #65B5D3;
+    --color-text-primary: #111D51;
+    --color-identity-secondary: #F6F6F6;
+    --color-danger: #dc3545;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-disabled: #e9ecef;
+}
+
+.color-identity-primary {
+    color: var(--color-identity-primary);
+}
+
+.bg-identity-primary {
+    background-color: var(--color-identity-primary);
+}
+
+.bg-identity-secondary {
+    background-color: var(--color-identity-secondary);
+}
+
+.color-text-primary {
+    color: var(--color-text-primary);
+}
+
+.bg-text-primary {
+    background-color: var(--color-text-primary);
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.input-error {
+    border-color: var(--color-danger);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, .25);
+}
+
+.input-error:focus {
+    border-color: var(--color-danger);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, .25);
+}
+
+.launcher-container {
+    bottom: 75px !important;
+}
+
+.br-20 {
+    border-radius: 20px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

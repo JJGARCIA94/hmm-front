@@ -1,0 +1,1 @@
+export const EVENT_GET_DOCTORS_SEARCH = 'get-doctors-search';

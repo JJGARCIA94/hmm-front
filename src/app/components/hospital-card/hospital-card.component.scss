@@ -1,0 +1,21 @@
+.hospital-card-container {
+    min-height: 165px;
+
+    @media only screen and (max-width: 991px) {
+        min-width: 275px;
+        height: 200px;
+    }
+
+    .hospital-name {
+        font-size: 14px;
+    }
+
+    .hospital-address {
+        border-top: 1px solid lightgray;
+        font-size: 12px;
+    }
+
+    .hospital-phone {
+        font-size: 12px;
+    }
+}

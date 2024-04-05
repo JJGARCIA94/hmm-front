@@ -1,0 +1,5 @@
+<div *ngFor="let hospital of hospitalsInfo" class="hospital-card-container br-20 bg-white px-4 py-3 mb-0 mb-lg-4 me-4 me-lg-0 d-flex flex-column">
+    <div class="hospital-name fw-bold mb-2">{{hospital.name}}</div>
+    <div class="hospital-address pt-3 d-flex"><mat-icon class="pe-4 text-primary">location_on</mat-icon><span class="ps-2">{{hospital.address}}</span></div>
+    <div class="hospital-phone mt-3 d-flex align-items-center"><mat-icon class="pe-4 text-primary">phone</mat-icon><span class="ps-2">{{hospital.phone}}</span></div>
+</div>

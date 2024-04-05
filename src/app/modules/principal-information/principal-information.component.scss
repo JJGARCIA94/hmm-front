@@ -1,0 +1,15 @@
+.search-doctors-container {
+    margin-top: -40px;
+
+    @media only screen and (max-width: 1199px) {
+        margin-top: -24px;
+    }
+
+    @media only screen and (max-width: 991px) {
+        margin-top: 0px;
+    }
+
+    @media only screen and (max-width: 767px) {
+        margin-top: -40px;
+    }
+}

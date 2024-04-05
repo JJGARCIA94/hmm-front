@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="mb-5">
+        <app-search-doctors></app-search-doctors>
+    </div>
+    <div class="row">
+        <div *ngFor="let doctor of doctors" class="col-lg-6 col-xl-4 mb-4">
+            <div class="card">
+                <img class="card-img-top" [src]="doctor.image" alt="{{ doctor.image }}">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="card-title">{{ doctor.names + ' ' + doctor.lastName + ' ' + doctor.secondSurname }}</h5>
+                        <p class="card-text">{{ doctor.derivations }}</p>
+                    </div>
+                    <button *ngIf="!doctor.showDetails" class="btn btn-primary" (click)="toggleDetails(doctor)">Ver
+                        más</button>
+                    <div class="details" [ngClass]="{'open': doctor.showDetails}">
+                        <div class="details-content">
+                            <p>{{ doctor.about }}</p>
+                            <p class="fw-bold">Especialidades:</p>
+                            <ul>
+                                <li *ngFor="let study of doctor.studies">{{ study }}</li>
+                            </ul>
+                            <p class="fw-bold">Procedimientos:</p>
+                            <ul>
+                                <li *ngFor="let procedure of doctor.procedures">{{ procedure }}</li>
+                            </ul>
+                            <p class="fw-bold">Cursos:</p>
+                            <ul>
+                                <li *ngFor="let course of doctor.courses">{{ course }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button *ngIf="doctor.showDetails" class="btn btn-secondary close-button"
+                        (click)="toggleDetails(doctor)">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
