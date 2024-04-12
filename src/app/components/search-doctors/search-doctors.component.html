@@ -29,10 +29,13 @@
         </form>
         <div class="d-flex flex-column direct-access-container p-4 align-items-center">
             <p class="fw-bold">Tambien puedes buscar</p>
-            <div class="row">
-                <div *ngFor="let specialty of specialties.slice(0, 6)" class="col-12 col-md-4 col-lg-3 direct-access-items-container">
+            <div class="row w-100 px-0 px-lg-5">
+                <div *ngFor="let specialty of specialties.slice(0, 3)" class="col-12 col-md-4 direct-access-items-container">
                     <p class="py-2 px-3 text-center br-20 cursor-pointer direct-access-items" (click)="onSelectDerivation(specialty.id)">{{specialty.derivation}}</p>
                 </div>
+            </div>
+            <div class="row mt-4">
+                <button class="btn btn-danger">Pedir ambulancia</button>
             </div>
         </div>
     </div>

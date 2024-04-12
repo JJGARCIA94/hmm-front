@@ -2,6 +2,6 @@ export interface IHospital {
     id: number;
     name: string;
     address: string;
-    phone: string;
+    phones: string[];
     status: number;
 }

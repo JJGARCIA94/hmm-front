@@ -12,8 +12,17 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class DigitalInfoComponent {
   public images: IImagesCarouselItem[] = [
-    {id: 1, image: 'assets/images/digital-info1.jpeg', title: 'digital-info1', height: 500},
-    {id: 2, image: 'assets/images/digital-info2.jpeg', title: 'digital-info2', height: 500},
-    {id: 3, image: 'assets/images/digital-info3.jpeg', title: 'digital-info3', height: 500},
+    { id: 1, image: 'assets/images/digital-info1.jpeg', title: 'digital-info1', height: 500 },
+    { id: 2, image: 'assets/images/digital-info2.jpeg', title: 'digital-info2', height: 500 },
+    { id: 3, image: 'assets/images/digital-info3.jpeg', title: 'digital-info3', height: 500 },
   ];
+
+  constructor() { }
+
+  public onOpenConsult(): void {
+    const launcherButton = document.querySelector('#tt-mop-launcher .launcher-open-icon') as HTMLElement;
+    if (launcherButton) {
+      launcherButton.click();
+    }
+  }
 }

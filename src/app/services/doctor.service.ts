@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiConstants } from '../constanst/api.constans';
-import { IDoctor, ISearchDoctors, ISearchedDoctor } from '../models/doctor.model';
+import { IDoctor, IGetSearchedDoctor, ISearchDoctors } from '../models/doctor.model';
 
 @Injectable({
     providedIn: 'root'
@@ -16,6 +16,6 @@ export class DoctorService {
 
     getSearchDoctors(params: ISearchDoctors) {
         const endpoint = ApiConstants.getEndpoint(ApiConstants.GET_SEARCH_DOCTORS).replace(':idSpeciality', params.idSpeciality.toString()).replace(':idHospital', params.idHospital.toString());
-        return this.httpClient.post<ISearchedDoctor[]>(endpoint, { doctor: params.doctor.toString().trim() });
+        return this.httpClient.post<IGetSearchedDoctor>(endpoint, { doctor: params.doctor.toString().trim(), page: params.page });
     }
 }

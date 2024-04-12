@@ -26,5 +26,11 @@ export interface ISearchDoctors {
     idSpeciality: number;
     idHospital: number;
     doctor: string;
-    response?: ISearchedDoctor[]
+    page: number;
+    response?: IGetSearchedDoctor
+}
+
+export interface IGetSearchedDoctor {
+    result: ISearchedDoctor[],
+    total: number
 }

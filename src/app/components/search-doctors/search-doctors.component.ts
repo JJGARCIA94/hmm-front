@@ -67,11 +67,12 @@ export class SearchDoctorsComponent {
     }
   }
 
-  private onSearchDoctors(): void {
+  public onSearchDoctors(page: number = 1): void {
     const params: ISearchDoctors = {
       idSpeciality: this.specialty?.value,
       idHospital: this.hospital?.value,
-      doctor: this.search?.value
+      doctor: this.search?.value,
+      page: page
     }
     this.doctorService.getSearchDoctors(params).subscribe(response => {
       if(this.pathName === ROUTE_DOCTORS_SPECIALITIES) {
