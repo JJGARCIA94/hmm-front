@@ -2,6 +2,19 @@
   flex: 1;
 }
 
+.book-appointment-text {
+  position: fixed;
+  bottom: 81px;
+  right: 20px;
+  height: 35px;
+  width: 130px;
+  background-color: #FEFEFE;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  font-size: 14px;
+  padding-left: 16px;
+}
+
 .preAdmission-btn {
   position: fixed;
   bottom: -10px;

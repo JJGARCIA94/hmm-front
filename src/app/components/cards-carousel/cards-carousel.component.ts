@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { ICardCarouselItem } from '../../models/card-carousel.model';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CardsCarouselComponent {
   @Input() cardCarouselItems: ICardCarouselItem[] = [];
+  @Output() onSeeMoreEvent = new EventEmitter<number>();
   public currentIndex: number = 0;
   public displacement: number = 0;
   public cardsOnDisplay: number = 0;
@@ -54,5 +55,9 @@ export class CardsCarouselComponent {
       const cardItem = document.getElementsByClassName('cards-carousel-items-container')[0] as HTMLElement;
       this.displacement += cardItem.offsetWidth;
     }
+  }
+
+  public onSeeMore(id: number): void {
+    this.onSeeMoreEvent.emit(id);
   }
 }

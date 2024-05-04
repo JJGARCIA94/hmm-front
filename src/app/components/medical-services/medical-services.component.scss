@@ -40,6 +40,12 @@
         height: 277px;
     }
 
+    .medical-services-cards-img {
+        @media only screen and (max-width: 991px) {
+            max-height: 250px;
+        }
+    }
+
     .medical-services-cards-title {
         font-size: 17px;
         font-weight: 700;

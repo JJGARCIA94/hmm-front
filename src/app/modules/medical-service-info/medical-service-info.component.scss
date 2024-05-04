@@ -1,0 +1,22 @@
+.medical-service-info-title {
+    font-size: 45px;
+    line-height: 45px;
+}
+
+.medical-service-info-description {
+    font-size: 16px;
+}
+
+.medical-services-cards-container {
+    height: 259px;
+
+    @media only screen and (max-width: 991px) {
+        height: 277px;
+    }
+
+    .medical-services-cards-img {
+        @media only screen and (max-width: 991px) {
+            max-height: 250px;
+        }
+    }
+}

@@ -15,7 +15,7 @@
                     <p class="cards-carousel-items-titles">{{item.title}}</p>
                     <p class="cards-carousel-items-descriptions">{{item.description}}</p>
                 </div>
-                <button class="btn btn-light text-primary cards-carousel-items-btns d-flex align-items-center"><span>Ver
+                <button class="btn btn-light text-primary cards-carousel-items-btns d-flex align-items-center" (click)="onSeeMore(item.id)"><span>Ver
                         más</span> <mat-icon
                         class="text-primary medical-info-img-info-icon">keyboard_arrow_right</mat-icon></button>
             </div>

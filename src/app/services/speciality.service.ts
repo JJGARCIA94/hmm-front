@@ -13,4 +13,9 @@ export class SpecialityService {
         const endpoint = ApiConstants.getEndpoint(ApiConstants.GET_SPECIALTIES);
         return this.httpClient.get<ISpeciality[]>(endpoint);
     }
+
+    getSpecialtyById(id: number | string) {
+        const endpoint = ApiConstants.getEndpoint(ApiConstants.GET_SPECIALTY_BY_ID.replace(':id', id.toString()));
+        return this.httpClient.get<ISpeciality>(endpoint);
+    }
 }

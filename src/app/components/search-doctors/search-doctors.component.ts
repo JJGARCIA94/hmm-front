@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ISpeciality } from '../../models/speciality.model';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,14 +11,14 @@ import { DoctorService } from '../../services/doctor.service';
 import { ISearchDoctors } from '../../models/doctor.model';
 import { CacheService } from '../../services/cache.service';
 import { Router } from '@angular/router';
-import { ROUTE_DOCTORS_SPECIALITIES } from '../../constanst/routue.constants';
+import { ROUTE_DOCTORS_SPECIALITIES, ROUTE_REQUEST_AMBULANCE } from '../../constanst/routue.constants';
 import { EventService } from '../../services/event.service';
 import { EVENT_GET_DOCTORS_SEARCH } from '../../constanst/event.constant';
 
 @Component({
   selector: 'app-search-doctors',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatIconModule, MatDividerModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatIconModule, MatDividerModule/* , GoogleMapsModule */],
   templateUrl: './search-doctors.component.html',
   styleUrl: './search-doctors.component.scss'
 })
@@ -65,6 +65,10 @@ export class SearchDoctorsComponent {
     else if(this.pathName === ROUTE_DOCTORS_SPECIALITIES) {
       this.onSearchDoctors();
     }
+  }
+  
+  public onRequestAmbulance(): void {
+    this.router.navigate([`/${ROUTE_REQUEST_AMBULANCE}`]);
   }
 
   public onSearchDoctors(page: number = 1): void {

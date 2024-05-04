@@ -1,0 +1,33 @@
+.card {
+    margin-bottom: 20px;
+}
+
+.card-img-top {
+    height: 60%;
+    object-fit: cover;
+}
+
+.card-body {
+    height: 40%;
+}
+
+.details {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 4rem);
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 999;
+}
+
+.details.open {
+    display: block;
+}
+
+.details-content {
+    padding: 20px;
+    position: relative;
+}

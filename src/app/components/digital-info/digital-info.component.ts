@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ImagesCarouselComponent } from '../images-carousel/images-carousel.component';
 import { IImagesCarouselItem } from '../../models/images-carousel.model';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
+import { ROUTE_MEDICAL_DIGITAL } from '../../constanst/routue.constants';
 
 @Component({
   selector: 'app-digital-info',
@@ -17,12 +19,16 @@ export class DigitalInfoComponent {
     { id: 3, image: 'assets/images/digital-info3.jpeg', title: 'digital-info3', height: 500 },
   ];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   public onOpenConsult(): void {
     const launcherButton = document.querySelector('#tt-mop-launcher .launcher-open-icon') as HTMLElement;
     if (launcherButton) {
       launcherButton.click();
     }
+  }
+
+  public onSeeMore(): void {
+    this.router.navigate([`/${ROUTE_MEDICAL_DIGITAL}`]);
   }
 }

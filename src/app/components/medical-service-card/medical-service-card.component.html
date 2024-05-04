@@ -1,0 +1,12 @@
+<div class="row py-4 bg-primary br-20 mx-0 h-100">
+    <div class="col-6 col-md-5 ps-3 pe-2 pe-md-3 py-2">
+        <img [src]="'assets/images/medical-area.jpeg'" class="medical-services-cards-img img-fluid br-20 h-100" alt="main-information-img">
+    </div>
+    <div class="col-6 col-md-7 p-2 text-white d-flex flex-column justify-content-between">
+        <p class="medical-services-cards-title">{{specialty.name}}</p>
+        <p class="medical-services-cards-description">Descripción ...</p>
+        <p class="medical-services-cards-location-title mb-0">Disponible en:</p>
+        <p class="medical-services-cards-location">Mazatlán</p>
+        <button class="btn btn-light text-primary medical-services-cards-btns" (click)="onSeeMore(specialty.id)">Ver más</button>
+    </div>
+</div>

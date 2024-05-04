@@ -16,6 +16,12 @@
         .medical-area-subtitle {
             font-size: 12px;
         }
+
+        .medical-area-info-img {
+            @media only screen and (max-width: 991px) {
+                max-height: 200px;
+            }
+        }
     }
 
     .medical-area-location-container {

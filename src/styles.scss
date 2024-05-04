@@ -60,6 +60,15 @@
 
 .launcher-container {
     bottom: 75px !important;
+    right: 128px !important;
+    width: 50px !important;
+    height: 50px !important;
+
+    .launcher-open-icon, .launcher-close-icon {
+        height: 50px !important;
+        width: 50px !important;
+        transform: scale(0.8) !important;
+    }
 }
 
 .br-20 {

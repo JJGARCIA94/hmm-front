@@ -3,6 +3,8 @@ import { ICardCarouselItem } from '../../models/card-carousel.model';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { CardsCarouselComponent } from '../cards-carousel/cards-carousel.component';
+import { Router } from '@angular/router';
+import { ROUTE_BLOG_INFO } from '../../constanst/routue.constants';
 
 
 @Component({
@@ -25,5 +27,10 @@ export class MedicalBlogComponent {
     { id: 9, image: 'assets/images/digital-info1.jpeg', title: 'test 9', description: 'test' },
   ];
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  public onGoToBlog(idBlog: number = 0): void {
+    const paramRouteBlog = idBlog === 0 ? '' : `/${idBlog}`;
+    this.router.navigate([`/${ROUTE_BLOG_INFO}${paramRouteBlog}`]);
+  }
 }

@@ -1,0 +1,19 @@
+<div class="d-flex flex-column w-100 h-100">
+    <div class="fw-bold">
+        Verifica que la dirección sea correcta.
+    </div>
+    <div class="text-danger fw-bold">
+        *En caso de que la dirección no sea correcta presionar la direccion correcta en el mapa y esta se marcara.
+    </div>
+    <div class="text-danger fw-bold">
+        *Es importante que de permisos de localización a su navegador.
+    </div>
+    <div class="text-center mt-3"><button class="btn btn-primary" [disabled]="!center" (click)="onRequestAmbulance()">Pedir Ambulancia</button></div>
+    <div class="h-100 mt-3">
+        <google-map [height]="isMobile ? '500px' : '100%'" width="100%" [center]="center" [zoom]="16"
+            (mapClick)="addMarker($event)">
+            <map-marker [position]="markerPositions" [options]="markerOptions"
+                icon="assets/logos/hospital-marker.png" />
+        </google-map>
+    </div>
+</div>

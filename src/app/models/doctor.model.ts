@@ -19,7 +19,7 @@ export interface ISearchedDoctor extends IDoctor {
     studies: string[];
     procedures: string[];
     courses: string[];
-    showDetails: boolean;
+    showDetails?: boolean;
 }
 
 export interface ISearchDoctors {

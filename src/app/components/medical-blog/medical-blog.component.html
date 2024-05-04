@@ -1,8 +1,8 @@
 <div class="d-flex flex-column medical-blog-container">
   <p class="medical-blog-title mb-0">Blog</p>
   <p class="medical-blog-subtitle mb-3">Novedades Médicas en Sinaloa</p>
-  <app-cards-carousel [cardCarouselItems]="cardCarouselItems"></app-cards-carousel>
+  <app-cards-carousel [cardCarouselItems]="cardCarouselItems" (onSeeMoreEvent)="onGoToBlog($event)"></app-cards-carousel>
   <div class="mt-4 align-self-center">
-    <button class="btn btn-primary medical-blog-btn">Visitar Blog</button>
+    <button class="btn btn-primary medical-blog-btn" (click)="onGoToBlog()">Visitar Blog</button>
   </div>
 </div>

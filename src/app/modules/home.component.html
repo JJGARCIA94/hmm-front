@@ -4,6 +4,7 @@
         <router-outlet></router-outlet>
     </div>
     <app-footer></app-footer>
+    <div *ngIf="isLauncherButtonCharge" class="d-flex align-items-center justify-content-center cursor-pointer book-appointment-text" (click)="onOpenBookAppointment()">Agenda tu Cita</div>
     <a href="https://form.jotform.com/hospital_marina/consentimiento-informa" target="_blank">
         <img src="assets/logos/preadmision.png" class="preAdmission-btn cursor-pointer" alt="preadmision" width="200">
     </a>

@@ -1,0 +1,14 @@
+<div class="d-flex flex-column align-items-center">
+    <h4>Si quiere agendar una cita siga los siguientes pasos:</h4>
+    <div class="col-12 d-flex justify-content-center my-3">
+        <button class="medical-digital-steps-arrows d-flex align-items-center justify-content-center" [disabled]="this.currentIndex <= 0" (click)="onPreviewItem()"
+            ><mat-icon>keyboard_arrow_left</mat-icon></button>
+        <button class="medical-digital-steps-arrows ms-3 d-flex align-items-center justify-content-center" [disabled]="this.currentIndex >= this.medicalDigitalItems.length - 1" (click)="onNextItem()"
+           ><mat-icon>keyboard_arrow_right</mat-icon></button>
+    </div>
+    <p class="fw-bold mt-3">Paso {{medicalDigitalItems[currentIndex].id}}:</p>
+    <div class="d-flex flex-column flex-md-row w-100 justify-content-center">
+        <span class="medical-digital-step-description mb-3 mb-md-0 me-0 me-md-3">{{medicalDigitalItems[currentIndex].description}}</span>
+        <img [src]="medicalDigitalItems[currentIndex].img" [alt]="'step'+medicalDigitalItems[currentIndex].id">
+    </div>
+</div>

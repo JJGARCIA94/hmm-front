@@ -9,7 +9,7 @@
             hasta servicios de alta especialidad, para
             cuidar de cada uno de nuestros pacientes en
             cualquier etapa de su vida.</p>
-        <button class="btn btn-primary medical-services-btn d-flex align-items-center"><span>Conoce
+        <button class="btn btn-primary medical-services-btn d-flex align-items-center" (click)="onSeeMore()"><span>Conoce
                 más</span> <mat-icon>keyboard_arrow_right</mat-icon></button>
     </div>
     <div class="col-12 col-lg-8 col-xl-9">
@@ -25,7 +25,8 @@
             <div *ngFor="let item of specialties.slice(currentIndex * cardsOnDisplay, (currentIndex + 1) * cardsOnDisplay); let i = index" 
      class="col-12 col-xl-6 medical-services-cards-container" 
      [@cardAnimation]="(i >= previousIndex * cardsOnDisplay && i < currentIndex * cardsOnDisplay) ? 'leave' : 'enter'">
-                <div class="row py-4 bg-primary br-20 mx-0 h-100">
+            <app-medical-service-card [specialty]="item" (onSeeMoreEvent)="onSeeMore($event)"></app-medical-service-card>
+                <!-- <div class="row py-4 bg-primary br-20 mx-0 h-100">
                     <div class="col-6 col-md-5 ps-3 pe-2 pe-md-3 py-2">
                         <img [src]="'assets/images/medical-area.jpeg'" class="medical-services-cards-img img-fluid br-20 h-100" alt="main-information-img">
                     </div>
@@ -34,9 +35,9 @@
                         <p class="medical-services-cards-description">Descripción ...</p>
                         <p class="medical-services-cards-location-title mb-0">Disponible en:</p>
                         <p class="medical-services-cards-location">Mazatlán</p>
-                        <button class="btn btn-light text-primary medical-services-cards-btns">Ver más</button>
+                        <button class="btn btn-light text-primary medical-services-cards-btns" (click)="onSeeMore(item.id)">Ver más</button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
