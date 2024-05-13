@@ -7,6 +7,9 @@ import { ROUTE_SERVICE_INFO } from '../../constanst/routue.constants';
 import { ISearchedDoctor } from '../../models/doctor.model';
 import { environment } from '../../environments/environment';
 import { DOCTOR_IMAGES_ROUTE } from '../../constanst/doctor.constants';
+import { EVENT_CALL_GET_SPECIALTIES } from '../../constanst/event.constant';
+import { Subject, Subscription, takeUntil } from 'rxjs';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-medical-service-info',
@@ -20,13 +23,16 @@ export class MedicalServiceInfoComponent {
   public specialties: ISpeciality[] = [];
   public doctors: ISearchedDoctor[] = [];
   public serviceExist: boolean = true;
+  public totalRows: number = 0;
+  public eventPagination: string = EVENT_CALL_GET_SPECIALTIES;
+  private destroyerNotifier: Subject<void> = new Subject();
+  private subscription!: Subscription;
   
-  constructor(private route: ActivatedRoute, private specialityService: SpecialityService, private doctorService: DoctorService, private router: Router){}
+  constructor(private route: ActivatedRoute, private specialityService: SpecialityService, private doctorService: DoctorService, private router: Router, private eventService: EventService){}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.idService = params['id'];
-      console.log(this.idService);
 
       if(this.idService) {
         this.description = 'Estos son nuestros médicos de esta especialidad:';
@@ -36,11 +42,21 @@ export class MedicalServiceInfoComponent {
         this.getSpecialties();
       }
     });
+
+    this.subscription = this.eventService.on(EVENT_CALL_GET_SPECIALTIES)
+      .pipe(takeUntil(this.destroyerNotifier))
+      .subscribe(
+        (data) => {
+          this.getSpecialties(data.data);
+          this.eventService.complete();
+        }
+      );
   }
 
-  private getSpecialties(): void {
-    this.specialityService.getSpecialties().subscribe(response => {
-      this.specialties = response;
+  private getSpecialties(page: number = 1): void {
+    this.specialityService.getSpecialtiesPagination(page).subscribe(response => {
+      this.specialties = response.result;
+      this.totalRows = response.total;
     });
   }
 
@@ -55,7 +71,6 @@ export class MedicalServiceInfoComponent {
 
       this.title = response.name;
       this.getDoctorsBySpecialty();
-      console.log(response);
     });
   }
 
@@ -76,5 +91,9 @@ export class MedicalServiceInfoComponent {
 
   public onGoToAllService(): void {
     this.router.navigate([`/${ROUTE_SERVICE_INFO}`]);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

@@ -11,9 +11,10 @@ import { DoctorService } from '../../services/doctor.service';
 import { ISearchDoctors } from '../../models/doctor.model';
 import { CacheService } from '../../services/cache.service';
 import { Router } from '@angular/router';
-import { ROUTE_DOCTORS_SPECIALITIES, ROUTE_REQUEST_AMBULANCE } from '../../constanst/routue.constants';
+import { ROUTE_REQUEST_AMBULANCE } from '../../constanst/routue.constants';
 import { EventService } from '../../services/event.service';
-import { EVENT_GET_DOCTORS_SEARCH } from '../../constanst/event.constant';
+import { EVENT_CALL_GET_DOCTORS_SEARCH, EVENT_GET_DOCTORS_SEARCH, EVENT_RESTART_PAGINATION } from '../../constanst/event.constant';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-search-doctors',
@@ -36,12 +37,12 @@ export class SearchDoctorsComponent {
     specialty: [0],
     hospital: [0],
   });
-  private pathName: string = '';
+  private destroyerNotifier: Subject<void> = new Subject();
+  private subscription!: Subscription;
 
   constructor(private formBuilder: FormBuilder, private specialityService: SpecialityService, private hospitalService: HospitalService, private doctorService: DoctorService, private cacheService: CacheService, private router: Router, private eventService: EventService) { }
 
   ngOnInit(): void {
-    this.pathName = window.location.pathname.replace('/', '');
     this.specialityService.getSpecialties().subscribe(response => {
       this.specialties = response;
     });
@@ -50,23 +51,27 @@ export class SearchDoctorsComponent {
       this.hospitals = response;
     });
 
+    this.subscription = this.eventService.on(EVENT_CALL_GET_DOCTORS_SEARCH)
+      .pipe(takeUntil(this.destroyerNotifier))
+      .subscribe(
+        (data) => {
+          this.onSearchDoctors(data.data);
+          this.eventService.complete();
+        }
+      );
+
     this.getCache();
   }
 
   private getCache(): void {
     const searchDoctorsCache = this.cacheService.getValue(this.searchDoctorsKey);
-    if(searchDoctorsCache) {
-      this.search?.setValue(searchDoctorsCache.doctor);
-      this.specialty?.setValue(searchDoctorsCache.idSpeciality);
-      this.hospital?.setValue(searchDoctorsCache.idHospital);
-      this.eventService.broadcast({ id: EVENT_GET_DOCTORS_SEARCH, data: searchDoctorsCache.response });
+    if (searchDoctorsCache) {
+      this.searchDoctorsForm.setValue(searchDoctorsCache.data.values);
+      this.eventService.broadcast({ id: EVENT_GET_DOCTORS_SEARCH, data: searchDoctorsCache.data });
       this.cacheService.clearCache(this.searchDoctorsKey);
     }
-    else if(this.pathName === ROUTE_DOCTORS_SPECIALITIES) {
-      this.onSearchDoctors();
-    }
   }
-  
+
   public onRequestAmbulance(): void {
     this.router.navigate([`/${ROUTE_REQUEST_AMBULANCE}`]);
   }
@@ -79,14 +84,11 @@ export class SearchDoctorsComponent {
       page: page
     }
     this.doctorService.getSearchDoctors(params).subscribe(response => {
-      if(this.pathName === ROUTE_DOCTORS_SPECIALITIES) {
-        this.eventService.broadcast({ id: EVENT_GET_DOCTORS_SEARCH, data: response });
-        return;
-      }
+      this.eventService.broadcast({ id: EVENT_GET_DOCTORS_SEARCH, data: { response, values: this.searchDoctorsForm.value } });
 
-      params.response = response;
-      this.cacheService.setValue(this.searchDoctorsKey, params);
-      this.router.navigate([`/${ROUTE_DOCTORS_SPECIALITIES}`]);
+      if(page === 1) {
+        this.eventService.broadcast({ id: EVENT_RESTART_PAGINATION });
+      }
     });
   }
 
@@ -99,10 +101,14 @@ export class SearchDoctorsComponent {
 
   public onSubmitSearchDoctorForm(): void {
     this.searchDoctorsForm.markAllAsTouched();
-    if(this.searchDoctorsForm.invalid) {
+    if (this.searchDoctorsForm.invalid) {
       return;
     }
 
     this.onSearchDoctors();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

@@ -4,3 +4,8 @@ export interface ISpeciality {
     derivation: string;
     status: number;
 }
+
+export interface ISpecialtyPagination {
+    result: ISpeciality[];
+    total: number;
+}

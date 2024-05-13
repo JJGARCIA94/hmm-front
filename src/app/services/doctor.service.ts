@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { ApiConstants } from '../constanst/api.constans';
 import { IDoctor, IGetSearchedDoctor, ISearchDoctors, ISearchedDoctor } from '../models/doctor.model';
 
+export const searchDoctorsKey = 'search-doctors-registration';
+
 @Injectable({
     providedIn: 'root'
 })

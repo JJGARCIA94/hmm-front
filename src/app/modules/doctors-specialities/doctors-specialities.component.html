@@ -2,75 +2,10 @@
     <div class="mb-5">
         <app-search-doctors></app-search-doctors>
     </div>
-    <div class="row">
-        <div class="col-12 d-flex justify-content-center">
-            <div *ngIf="doctors && totalRows > itemsPerPage">
-                <nav aria-label="Page navigation">
-                  <ul class="pagination">
-                    <li class="page-item" [class.disabled]="currentPage === 1">
-                      <a class="page-link" href="javascript:void(0)" (click)="onPageChange(1)">Primera</a>
-                    </li>
-                    <ng-container *ngIf="currentPage > 3 "><!-- && visible -->
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:void(0)" (click)="onPageChange(1)">1</a>
-                      </li>
-                      <li class="page-item disabled">
-                        <span class="page-link">...</span>
-                      </li>
-                    </ng-container>
-                    <li class="page-item" *ngFor="let page of visiblePages()" [class.active]="page === currentPage">
-                      <a class="page-link" href="javascript:void(0)" (click)="onPageChange(page)">{{ page }}</a>
-                    </li>
-                    <ng-container *ngIf="currentPage < totalPages() - 2 "><!-- && visible -->
-                      <li class="page-item disabled">
-                        <span class="page-link">...</span>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:void(0)" (click)="onPageChange(totalPages())">{{ totalPages() }}</a>
-                      </li>
-                    </ng-container>
-                    <li class="page-item" [class.disabled]="currentPage === totalPages()">
-                      <a class="page-link" href="javascript:void(0)" (click)="onPageChange(totalPages())">Última</a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-        </div>
-    </div>
+    <app-pagination [totalRows]="totalRows" [event]="eventPagination"></app-pagination>
 </div>
 <div class="row">
     <div *ngFor="let doctor of doctors" class="col-lg-6 col-xl-4 mb-4">
       <app-doctor-card [doctor]="doctor"></app-doctor-card>
-        <!-- <div class="card h-100">
-            <img class="card-img-top" [src]="doctor.image" alt="{{ doctor.image }}">
-            <div class="card-body d-flex flex-column justify-content-between">
-                <div>
-                    <h5 class="card-title">Dr(a). {{ doctor.names + ' ' + doctor.lastName + ' ' + doctor.secondSurname
-                        }}</h5>
-                    <p class="card-text">{{ doctor.derivations }}</p>
-                </div>
-                <button *ngIf="!doctor.showDetails" class="btn btn-primary" (click)="toggleDetails(doctor)">Ver
-                    más</button>
-                <div class="details" [ngClass]="{'open': doctor.showDetails}">
-                    <div class="details-content">
-                        <p>{{ doctor.about }}</p>
-                        <p class="fw-bold">Especialidades:</p>
-                        <ul>
-                            <li *ngFor="let study of doctor.studies">{{ study }}</li>
-                        </ul>
-                        <p class="fw-bold">Procedimientos:</p>
-                        <ul>
-                            <li *ngFor="let procedure of doctor.procedures">{{ procedure }}</li>
-                        </ul>
-                        <p class="fw-bold">Cursos:</p>
-                        <ul>
-                            <li *ngFor="let course of doctor.courses">{{ course }}</li>
-                        </ul>
-                    </div>
-                </div>
-                <button *ngIf="doctor.showDetails" class="btn btn-secondary close-button"
-                    (click)="toggleDetails(doctor)">Cerrar</button>
-            </div>
-        </div> -->
     </div>
 </div>

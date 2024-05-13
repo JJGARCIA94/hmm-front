@@ -4,6 +4,7 @@ import { MedicalServiceInfoComponent } from './medical-service-info.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MedicalServiceCardComponent } from '../../components/medical-service-card/medical-service-card.component';
 import { DoctorCardComponent } from '../../components/doctor-card/doctor-card.component';
+import { PaginationComponent } from '../../components/pagination/pagination.component';
 
 const routes: Routes = [
   { path: '', component: MedicalServiceInfoComponent, pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MedicalServiceCardComponent,
-    DoctorCardComponent
+    DoctorCardComponent,
+    PaginationComponent
   ],
   exports: [MedicalServiceInfoComponent]
 })

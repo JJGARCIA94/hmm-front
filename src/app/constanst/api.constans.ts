@@ -3,6 +3,7 @@ import { environment } from "../environments/environment";
 export class ApiConstants {
 
     static readonly GET_SPECIALTIES = 'specialties';
+    static readonly GET_SPECIALTIES_PAGINATION = 'specialties/pagination/:page';
     static readonly GET_SPECIALTY_BY_ID = 'specialties/:id';
     static readonly GET_HOSPITALS = 'hospitals';
     static readonly GET_DOCTORS = 'doctors';
