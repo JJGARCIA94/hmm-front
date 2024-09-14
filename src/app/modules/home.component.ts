@@ -8,20 +8,6 @@ import { ROUTE_PREADMISSION } from '../constanst/routue.constants';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
-  zoom = 12;
-  center: google.maps.LatLngLiteral = {
-    lat: 22.2736308,
-    lng: 70.7512555
-  };
-  options: google.maps.MapOptions = {
-    mapTypeId: 'hybrid',
-    zoomControl: false,
-    scrollwheel: false,
-    disableDoubleClickZoom: true,
-    maxZoom: 15,
-    minZoom: 8,
-  };
   public isLauncherButtonCharge: boolean = false;
   private launcherButton!: HTMLElement;
   constructor(private router: Router, private renderer: Renderer2) { }

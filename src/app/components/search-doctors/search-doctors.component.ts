@@ -11,7 +11,6 @@ import { DoctorService } from '../../services/doctor.service';
 import { ISearchDoctors } from '../../models/doctor.model';
 import { CacheService } from '../../services/cache.service';
 import { Router } from '@angular/router';
-import { ROUTE_REQUEST_AMBULANCE } from '../../constanst/routue.constants';
 import { EventService } from '../../services/event.service';
 import { EVENT_CALL_GET_DOCTORS_SEARCH, EVENT_GET_DOCTORS_SEARCH, EVENT_RESTART_PAGINATION } from '../../constanst/event.constant';
 import { Subject, Subscription, takeUntil } from 'rxjs';
@@ -70,10 +69,6 @@ export class SearchDoctorsComponent {
       this.eventService.broadcast({ id: EVENT_GET_DOCTORS_SEARCH, data: searchDoctorsCache.data });
       this.cacheService.clearCache(this.searchDoctorsKey);
     }
-  }
-
-  public onRequestAmbulance(): void {
-    this.router.navigate([`/${ROUTE_REQUEST_AMBULANCE}`]);
   }
 
   public onSearchDoctors(page: number = 1): void {
