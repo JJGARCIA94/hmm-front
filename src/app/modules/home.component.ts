@@ -42,6 +42,6 @@ export class HomeComponent {
       }, 1000);
     };
 
-    this.renderer.appendChild(document.body, script);//todo mover el icono circulo a la izquierda y dibujarle un rectangulo que tenga texto a la derecha
+    this.renderer.appendChild(document.body, script);
   }
 }
