@@ -22,3 +22,9 @@
     font-size: 12px;
     font-weight: 600;
 }
+
+.medical-services-cards-img {
+    @media only screen and (max-width: 991px) {
+        max-height: 250px;
+    }
+}
